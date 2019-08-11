@@ -1,0 +1,177 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ScrapydArt &#8212; ScrapydArt 1.2.0.6 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="概述" href="overview.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="scrapydart">
+<h1>ScrapydArt<a class="headerlink" href="#scrapydart" title="Permalink to this headline">¶</a></h1>
+<p>scrapydArt在scrapyd基础上新增加了权限验证、爬虫调用情况统计、页面样式美化、运行信息统计功能以及新了一些更贴近工作的API，
+对于爬虫管理，奎因的理念是”将80%的情况掌握在自己手中”。</p>
+<p>我们经常在工作中使用scrapyd来部署我们的爬虫，尽管它为我们提供了几个API，但还是无法满足日常工作的需求，所以奎因
+在scrapyd的原有基础上新增加了一些贴近实际工作需求的功能以及api。</p>
+<p>scrapyd原功能保持不变，意味着你不会对你之前的项目产生影响，学习成本也变得很低。</p>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">概述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#id2">项目与版本说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#id3">做了哪些改动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#starting-scrapydart">Starting ScrapydArt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#id4">爬虫的调度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#web">Web 操作界面</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id2">依赖</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#scrapydart">安装ScrapydArt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">权限控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="auth.html#id2">访问权限控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html#id3">启用访问权限</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html#id4">如何使用</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#schedulelist-json">schedulelist.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#runtimestats-json">runtimestats.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#psnstats-json">psnstats.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#prospider-json">prospider.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#timerank-json">timerank.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#invokerank-json">invokerank.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#filter-json">filter.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#order-json">order.json</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">配置文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config.html#http-port">http_port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#bind-address">bind_address</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#max-proc">max_proc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#max-proc-per-cpu">max_proc_per_cpu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#debug">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#eggs-dir">eggs_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#dbs-dir">dbs_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#logs-dir">logs_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#items-dir">items_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#jobs-to-keep">jobs_to_keep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#finished-to-keep">finished_to_keep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#poll-interval">poll_interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#runner">runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#application">application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#webroot">webroot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#node-name">node_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#example-configuration-file">Example configuration file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">使用与开发交流</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contact.html#id2">使用交流</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contact.html#id3">开发交流</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#reporting-issues-bugs">Reporting Issues &amp; Bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#running-tests">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#writing-tests">Writing tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#installing-locally">Installing Locally</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">版本说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="news.html#n">1.2.0.n</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploying your project</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ScrapydArt</a><ul>
+<li><a class="reference internal" href="#contents">Contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="overview.html" title="next chapter">概述</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, quinns.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

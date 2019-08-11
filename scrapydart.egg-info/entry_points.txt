@@ -1,0 +1,3 @@
+[console_scripts]
+scrapydart = scrapydart.scripts.scrapyd_run:main
+

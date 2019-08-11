@@ -1,0 +1,9 @@
+include README.rst
+include MANIFEST.in
+include scrapydart/VERSION
+include scrapydart/default_scrapyd.conf
+recursive-include scrapydart/tests *.egg
+recursive-include scrapydart/scripts *.py
+recursive-include scrapydart/template *
+recursive-include scrapydart/ScrapydArtEnv *
+prune docs/_build
