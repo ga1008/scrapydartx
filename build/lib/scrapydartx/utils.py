@@ -8,8 +8,8 @@ from six.moves.configparser import NoSectionError
 import json
 from twisted.web import resource
 
-from scrapydart.spiderqueue import SqliteSpiderQueue
-from scrapydart.config import Config
+from scrapydartx.spiderqueue import SqliteSpiderQueue
+from scrapydartx.config import Config
 
 
 class JsonResource(resource.Resource):

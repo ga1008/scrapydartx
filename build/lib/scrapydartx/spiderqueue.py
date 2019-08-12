@@ -1,7 +1,7 @@
 from zope.interface import implementer
 
-from scrapydart.interfaces import ISpiderQueue
-from scrapydart.sqlite import JsonSqlitePriorityQueue
+from scrapydartx.interfaces import ISpiderQueue
+from scrapydartx.sqlite import JsonSqlitePriorityQueue
 
 
 @implementer(ISpiderQueue)

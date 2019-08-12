@@ -2,11 +2,11 @@
 from twisted.scripts.twistd import run
 from os.path import join, dirname
 from sys import argv
-import scrapydart
+import scrapydartx
 
 
 def main():
-    argv[1:1] = ['-n', '-y', join(dirname(scrapydart.__file__), 'txapp.py')]
+    argv[1:1] = ['-n', '-y', join(dirname(scrapydartx.__file__), 'txapp.py')]
     run()
 
 

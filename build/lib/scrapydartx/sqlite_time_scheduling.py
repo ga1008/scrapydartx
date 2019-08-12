@@ -6,7 +6,7 @@ import psutil
 import datetime
 from twisted.logger import Logger
 from .config import Config
-from scrapydart import global_values as glv
+from scrapydartx import global_values as glv
 
 
 class TimeSchedule:

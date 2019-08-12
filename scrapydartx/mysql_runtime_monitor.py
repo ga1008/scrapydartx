@@ -6,7 +6,7 @@ from twisted.logger import Logger
 from .config import Config
 from .Time_Method import time_pass2 as TP
 from .Time_Method import time_pass_to as TPT
-from scrapydart import global_values as glv
+from scrapydartx import global_values as glv
 import threading
 import signal
 import random

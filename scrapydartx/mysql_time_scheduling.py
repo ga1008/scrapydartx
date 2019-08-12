@@ -6,7 +6,7 @@ import requests
 import psutil
 from twisted.logger import Logger
 from .config import Config
-from scrapydart import global_values as glv
+from scrapydartx import global_values as glv
 from .mysql_models import SpiderScheduleModel, SpiderMonitor
 
 

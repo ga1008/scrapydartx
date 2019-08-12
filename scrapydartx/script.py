@@ -11,8 +11,8 @@ from twisted.application import app
 from scrapy.utils.project import project_data_dir
 from scrapy.exceptions import NotConfigured
 
-from scrapydart import get_application
-from scrapydart.config import Config
+from scrapydartx import get_application
+from scrapydartx.config import Config
 
 
 def _get_config():

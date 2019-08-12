@@ -4,9 +4,9 @@ import shutil
 import tempfile
 from contextlib import contextmanager
 
-from scrapydart import get_application
-from scrapydart.interfaces import IEggStorage
-from scrapydart.eggutils import activate_egg
+from scrapydartx import get_application
+from scrapydartx.interfaces import IEggStorage
+from scrapydartx.eggutils import activate_egg
 
 @contextmanager
 def project_environment(project):

@@ -18,7 +18,7 @@ from twisted.web import resource
 from .auth import decorator_auth
 from .webtools import get_invokes, get_ps, run_time_stats, get_psn, microsec_trunc
 from .webtools import valid_date, valid_index, valid_args, valid_params, spider_dict
-from scrapydart import global_values as glv
+from scrapydartx import global_values as glv
 lock = glv.get_value('lock')
 
 

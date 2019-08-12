@@ -1,5 +1,6 @@
 import os, pkg_resources
 
+
 def activate_egg(eggpath):
     """Activate a Scrapy egg file. This is meant to be used from egg runners
     to activate a Scrapy egg file. Don't use it from other code as it may

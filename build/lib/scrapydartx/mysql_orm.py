@@ -1,6 +1,6 @@
 import logging
-from scrapydart.mysql_models import SpiderMonitor, UnormalSpider, TerminatedSpider
-from scrapydart.mysql_models import session
+from scrapydartx.mysql_models import SpiderMonitor, UnormalSpider, TerminatedSpider
+from scrapydartx.mysql_models import session
 
 
 class GetData:
@@ -128,17 +128,7 @@ class GetData:
 
 
 if __name__ == "__main__":
-    import time
-    import datetime
-    # from Time_Method import time_pass2 as TP
-    #
     db = GetData()
-    # res = db.get_result(where_str
-    #         model=SpiderMonitor,
-    #         fields=['id', "create_time"],
-    #         where_dic={'id': '>*20', 'spider': '=*bvb'},
-    #         return_model_map=True
-    #     )
     db.del_data(
             model=SpiderMonitor,
             where_dic={
@@ -146,6 +136,3 @@ if __name__ == "__main__":
                 'id': [1]
             }
     )
-    # l = [TP(x.create_time.strftime("%Y-%m-%d %H:%M:%S")) for x in res]
-    # print(res[0][0], type(res[0][0]))
-    # print(l)

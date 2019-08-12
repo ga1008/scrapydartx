@@ -6,11 +6,11 @@ from twisted.internet import reactor, defer, protocol, error
 from twisted.application.service import Service
 from twisted.python import log
 
-from scrapydart.utils import get_crawl_args, native_stringify_dict
-from scrapydart import __version__
+from scrapydartx.utils import get_crawl_args, native_stringify_dict
+from scrapydartx import __version__
 from .interfaces import IPoller, IEnvironment
 from .scrapydart_extend import run_extend, set_default_config
-from scrapydart import global_values as glv
+from scrapydartx import global_values as glv
 lock = glv.get_value(key='lock')
 
 

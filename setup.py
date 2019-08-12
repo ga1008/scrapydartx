@@ -7,22 +7,21 @@ except ImportError:
     from distutils.core import setup
     using_setuptools = False
 
-from os.path import join, dirname
-
-with open(join(dirname(__file__), 'scrapydartx/VERSION')) as f:
-    version = f.read().strip()
+#
+# with open('scrapydartx/VERSION') as f:
+#     version = f.read().strip()
 
 setup_args = {
     'name': 'scrapydartx',
-    'version': version,
+    'version': '1.2.0.5',
     'url': 'https://github.com/GuardianGH/scrapydartx',
-    'description': 'a extension from ScrapydArt with added automatic scheduling and automatically stop the abnormal crawlers functions',
-    'long_description': open('README.rst', encoding="utf-8").read(),
+    'description': 'a extension from ScrapydArt',
+    # 'long_description': open('README.md', encoding="utf-8").read(),
     'author': 'Scrapy developers',
     'author_email': 'zhling2012@live.com',
     'maintainer': 'Scrapy developers',
     'maintainer_email': 'info@scrapy.org',
-    'license': 'BSD',
+    'LICENSE': 'BSD',
     'packages': ['scrapydartx'],
     'include_package_data': True,
     'zip_safe': False,

@@ -1,5 +1,5 @@
 import logging
-from scrapydart.sqlite_model import *
+from scrapydartx.sqlite_model import *
 
 
 class GetData:
@@ -85,14 +85,7 @@ class GetData:
 
 
 if __name__ == "__main__":
-    from scrapydart.sqlite_model import *
+    from scrapydartx.sqlite_model import *
     db = GetData()
-    # res = db.get(model='User', key_list=['name', 'fullname'], return_model_map=True)
-    # res = db.add(model=SpiderMonitor, add_dic={'spider': 'spider_1', 'runtime': 2})
-    # res = db.add(model=User, add_dic={'name': 'Guardian', 'fullname': 'Guardian Zhang', 'password': 'GA520'})
-
-    # res = db.get(model_name='SpiderMonitor', key_list=['spider', 'id', 'runtime'])
-    # res = [{x.id, x.spider, x.runtime} for x in res]
     res = db.update(model_name='SpiderMonitor', update_dic={'spider': 'spider_2', 'runtime': 10}, filter_dic={'id': 1})
-    # res = db.delete_data(model_name='SpiderMonitor', filter_dic={"id": 1})
     print(res)

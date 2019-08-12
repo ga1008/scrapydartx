@@ -13,7 +13,7 @@ from .auth import decorator_auth
 from .webservice import CustomResource
 from .webtools import str_to_bytes, make_table, microsec_trunc, features, host_information, make_urls
 from .websource import files
-from scrapydart import global_values as glv
+from scrapydartx import global_values as glv
 
 
 lock = glv.get_value(key='lock')
