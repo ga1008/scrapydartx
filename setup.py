@@ -16,11 +16,7 @@ setup_args = {
     'name': 'scrapydartx',
     'version': version,
     'url': 'https://github.com/GuardianGH/scrapydartx',
-    'description': '''fork from https://github.com/scrapy/scrapydart, 
-                A service for running Scrapy spiders, with an HTTP API, 
-                and automatic scheduling of crawlers according to set time,
-                and automatically stop the abnormal crawlers
-                ''',
+    'description': 'a extension from ScrapydArt with added automatic scheduling and automatically stop the abnormal crawlers functions',
     'long_description': open('README.rst', encoding="utf-8").read(),
     'author': 'Scrapy developers',
     'author_email': 'zhling2012@live.com',
