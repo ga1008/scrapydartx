@@ -7,7 +7,7 @@ $ conda env create -f ScrapydArt.yaml
 $ conda activate ScrapydArt
 $ pip install -r ScrapydArt.txt
 即可解决环境问题
-=======================================================================
+++++++++++++++++++++++++++++++++++++
 功能扩展说明：
 1. 集成了动态调度功能
 
