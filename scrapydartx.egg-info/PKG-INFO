@@ -1,0 +1,23 @@
+Metadata-Version: 1.2
+Name: scrapydartx
+Version: 1.2.0.5
+Summary: a extension from ScrapydArt
+Home-page: https://github.com/GuardianGH/scrapydartx
+Author: Scrapy developers
+Author-email: zhling2012@live.com
+Maintainer: Scrapy developers
+Maintainer-email: info@scrapy.org
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Environment :: No Input/Output (Daemon)
+Classifier: Topic :: Internet :: WWW/HTTP
