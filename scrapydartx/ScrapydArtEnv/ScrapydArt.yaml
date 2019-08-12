@@ -1,4 +1,4 @@
-name: ScrapydArt
+name: ScrapydArtX
 channels:
   - defaults
 dependencies:
@@ -111,5 +111,5 @@ dependencies:
     - zope-event==4.4
     - zope-interface==4.6.0
     - zope-schema==4.9.3
-prefix: /home/ga/anaconda3/envs/ScrapydArt
+prefix: /home/ga/anaconda3/envs/ScrapydArtX
 

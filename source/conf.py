@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'ScrapydArt'
+project = u'ScrapydArtX'
 copyright = u'2018, quinns'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ScrapydArt.tex', u'ScrapydArt Documentation',
+  ('index', 'ScrapydArtX.tex', u'ScrapydArtX Documentation',
    u'quinns', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'ScrapydArt', u'ScrapydArt Documentation',
+    ('index', 'ScrapydArtX', u'ScrapydArtX Documentation',
      [u'quinns'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'ScrapydArt', u'ScrapydArt Documentation',
-   u'quinns', 'ScrapydArt', 'One line description of project.',
+  ('index', 'ScrapydArtX', u'ScrapydArtX Documentation',
+   u'quinns', 'ScrapydArtX', 'One line description of project.',
    'Miscellaneous'),
 ]
 

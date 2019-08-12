@@ -13,7 +13,7 @@ from .environ import Environment
 from .config import Config
 
 def application(config):
-    app = Application("ScrapydArt")
+    app = Application("ScrapydArtX")
     http_port = config.getint('http_port', 6800)
     bind_address = config.get('bind_address', '127.0.0.1')
     poll_interval = config.getfloat('poll_interval', 5)
