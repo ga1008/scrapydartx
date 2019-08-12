@@ -71,7 +71,6 @@ post_data = {
     }
 result = requests.post(url='http://localhost:6800/scheduletodb.json', data=post_data)
 ```
-
 上面post_data变量中的 “args” 如有需要请传入一个字典，里面的键和值将自动传递给相应的爬虫（需要提前在爬虫内接收），此项为可选项，可不传。
 
 “status” 参数，数据类型为 int ，值为 0 或者1 或者2 或者3
