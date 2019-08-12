@@ -1,6 +1,8 @@
 本项目fork自ScrapydArt: https://github.com/dequinns/ScrapydArt
-==========================================================================================================================
-建议使用anaconda环境，请前往[主站](https://www.anaconda.com/distribution/#download-section)或者[清华站点](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D)下载并安装
+=====================================================================================================
+
+建议使用anaconda环境，请前往[主站](https://www.anaconda.com/distribution/#download-section)或者[清华站点]
+(https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D)下载并安装
 
 $ bash Anaconda3-2019.03-Linux-x86_64.sh
 
@@ -15,10 +17,15 @@ $ pip install -r ScrapydArt.txt
 即可解决环境问题
 
 ++++++++++++++++++++++++++++++++++++
-功能扩展说明：
-1. 集成了动态调度功能
 
-scrapydart 现在可以在设置文件里(default_scrapyd.conf)设置调度数据库为mysql 或者是sqlite:
+pip 安装： pip install scrapydartx
+
+++++++++++++++++++++++++++++++++++++
+
+功能扩展说明：
+
+1. 集成了动态调度功能
+scrapydartx 现在可以在设置文件里(default_scrapyd.conf)设置调度数据库为mysql 或者是sqlite:
 ```
 ...
 database_type = sqlite
@@ -46,7 +53,7 @@ strict_mode = no           // yes/no，设置是否严格模式
 strict_degree = 4         // >0的任意数，设置严格模式的严格程度，越低越严格
 ...
 ```
-
+在程序正确安装后，每次运行时都会有配置文件修改提示（包含以上部分配置选项），您可以手动修改这些配置，所以不用担心配置文件的位置问题，也不用担心程序配置错误了，直接重启程序再配置就行了，程序会保留您最后一次修改的信息。
 
 平台被安装并且启动后，会自动在调度数据库查找需要调度的爬虫，并且根据调度字典计算下次运行时间。
 需要注意的是，加入到调度数据库里的爬虫的项目名称（project）是必须的，并且不同的项目建议使用不同的项目名称
@@ -82,7 +89,12 @@ result = requests.post(url='http://localhost:6800/scheduletodb.json', data=post_
 设定为2的时候，爬虫将忽略系统资源情况，不管系统资源占用多少都会按时执行，但如果运行时间异常，也将会被平台异常管理机制自动终结
 设定为3的时候，爬虫为超级权限模式，不会被异常管理机制终止，同时忽略系统资源状况
 
-“schedule” 的值需要一个字典，类似 {"second": "*/30"}，意思是每30秒运行一次，也可以设置为具体的某个时间点，例如：
+“schedule” 的值需要一个字典，类似: 
+```
+{"second": "*/30"}
+```
+意思是每30秒运行一次，也可以设置为具体的某个时间点，例如：
+
 ```
 ...
 'schedule': {
@@ -95,38 +107,45 @@ result = requests.post(url='http://localhost:6800/scheduletodb.json', data=post_
   }
 ```
 
-        这样的设置是单次任务模式，爬虫只在设定的时间点（2019-06-04 10:50:50）运行一次
-        也可以是只有分钟，或者只有秒，或者只有小时、天、月、年，平台将自动计算下次到达设定的时间的时间间隔，
-        例如只给定 {'hour': 10}，则爬虫会在从明天开始的每一天的10点的当前分秒数启动，例如当发送了 "schedule" 参数为： 
+  这样的设置是单次任务模式，爬虫只在设定的时间点
+  ```
+  （2019-06-04 10:50:50）
+  ```
+  运行一次
+  也可以是只有分钟，或者只有秒，或者只有小时、天、月、年，平台将自动计算下次到达设定的时间的时间间隔，
+例如只给定 {'hour': 10}，则爬虫会在从明天开始的每一天的10点的当前分秒数启动，例如当发送了 "schedule" 参数为： 
 ```
 "schedule": {"hour": 10}
 ```
-而此时系统时间为 16:37:12，则爬虫将在明天，以及接下来的每一天的上午的 10:37:12 自动发送任务到运行平台并启动。        
+  而此时系统时间为 16:37:12，则爬虫将在明天，以及接下来的每一天的上午的 10:37:12 自动发送任务到运行平台并启动。        
 若只设置为 {'day': 4}，则意思是从下个月开始的每个月的4号的当前时分秒启动，以此类推
-        需要注意的是，设定的月为1~12， 日小于等于月最大天数，小时为0~23， 分钟数0~59，秒数0~59
-此外，我想你应该已经完全了解在参数中加 "*/" 或 不加 "*/"的作用了，若仍觉得不清楚，直接使用它你会发现其中的含义。
-        此外还可以设定星期数，例如 {'week': '*/2'}，意思是每周的周三执行，对的，星期的范围为0~6
-        星期可以配合年、月、时、分、秒同时设定，但是不可同时设定星期数和天，否则将只按照天来计算，并忽略星期的设定。
+  需要注意的是，设定的月为1~12， 日小于等于月最大天数，小时为0~23， 分钟数0~59，秒数0~59
+此外，我想你应该已经完全了解在参数中加 “*/” 或 不加 “*/” 的作用了，若仍觉得不清楚，直接使用它你会发现其中的含义。
+  此外还可以设定星期数，例如：
+  ```
+  {'week': '*/2'}
+  ```
+  意思是每周的周三执行，对的，星期的范围为0~6
+  星期可以配合年、月、时、分、秒同时设定，但是不可同时设定星期数和天，否则将只按照天来计算，并忽略星期的设定。
 
-    若入库成功，则返回的result如下：
+  若入库成功，则返回的result如下：
 ```
  {"node_name": "name of node", "status": "ok"}
 ```
-    入库成功后，等待几秒钟平台会发现它并且自动计算下次运行时间，后台将显示类似如下语句的日志：
+  入库成功后，等待几秒钟平台会发现它并且自动计算下次运行时间，后台将显示类似如下语句的日志：
 ```
-[- Scheduler -#info] job default-xinhua is waiting, countdown 540s
+  [- Scheduler -#info] job default-xinhua is waiting, countdown 540s
+                              ↑     ↑                             ↑
+                          项目名   爬虫名                     距下次运行秒数
 ```
-                                                            ↑               ↑                                                       ↑
-                                                       项目名        爬虫名                                      距下次运行秒数
-
-    查看调度爬虫：
+  查看调度爬虫：
 ```
     $ curl http://localhost:6800/listdbschedule.json -d projects="['project_name1', 'project_name2']" -d spiders="['spider1', 'spider2']"
 ```
 
-注意，参数projects与spiders需要传入字符串类型的列表，也可以什么都不传，将返回所有在数据库中的待调度爬虫和调度参数
+  注意，参数projects与spiders需要传入字符串类型的列表，也可以什么都不传，将返回所有在数据库中的待调度爬虫和调度参数
 
-    requests 方法：
+  requests 方法：
 ```
 import requests
 url = 'http://127.0.0.1:6800/listdbschedule.json?un=&pwd='
@@ -138,7 +157,7 @@ res = json.loads(requests.post(url=url, data=data).content)
 print(res)
 ```
 
-    正确返回：
+  正确返回：
 ```
 {"node_name": "name of node", "status": "ok", "database_schedules": 
                                         [{'id': schedule_id,
@@ -152,13 +171,14 @@ print(res)
                                           ...
                                           ] }
 ```
-    更改调度爬虫：
+
+  更改调度爬虫：
 ```
     $ curl http://localhost:6800/updatedbschedule.json -d id=update_id -d schedule=new_schedule -d args=new_args -d status=new_status
 ```
 
-    参数 id 是需要修改的那一条数据的id值，根据查看调度爬虫 listdbschedule.json 得知
-    requests 方法：
+  参数 id 是需要修改的那一条数据的id值，根据查看调度爬虫 listdbschedule.json 得知
+  requests 方法：
 ```
 import requests
 post_data = {
@@ -170,17 +190,17 @@ post_data = {
 result = requests.post(url='http://localhost:6800/updatedbschedule.json', data=post_data)
 ```
 
-    操作成功则返回：
+  操作成功则返回：
 ```
     {"node_name": "name of node", 'update': "ok"}
 ```
 
-    删除调度爬虫：
+  删除调度爬虫：
 ```
     $ curl http://localhost:6800/rmschedulefromdb.json -d id=delete_id
 ```
-    delete_id 根据查询调度爬虫得知
-    requests 方法：
+  delete_id 根据查询调度爬虫得知
+  requests 方法：
 ```
 import requests
 
@@ -190,36 +210,34 @@ post_data = {
 result = requests.post(url='http://localhost:6800/rmschedulefromdb.json', data=post_data)
 ```
 
-    正确返回:
+  正确返回:
 ```
   {"node_name": "name of node", 'delete': "ok"}
 ```
 
-    若在配置中设置了auth_username 和 auth_password，则需要在每次post请求的data中加入 {'un': user_name, 'pwd': password}， get 请求中加入 ?un=user_name&pwd=password
+  若在配置中设置了auth_username 和 auth_password，则需要在每次post请求的data中加入 {'un': user_name, 'pwd': password}， get 请求中加入 ?un=user_name&pwd=password
 
 2. 异常爬虫管理功能
 
-    此项功能默认在平台启动的时候自动启动，也可以在配置文件内设置为不启用 (默认 activate)
+  此项功能默认在平台启动的时候自动启动，也可以在配置文件内设置为不启用 (默认 activate)
 ```
 ...
 Terminator = deactivate
 ...
 ```
-此功能会每隔数秒巡视一遍所有正在运行的爬虫，并根据之前的运行时间计算方差数与均值，推算判断本次运行的时间是否合理，若不合理，则会在几秒钟内终结此任务
-不需要担心爬虫任务永远被杀死了，除非你设置的是单次定时任务，否则爬虫将在下一个周期继续正常启动
-若设置为 Terminator设置为 "activate"，将会在平台启动时在后台显示日志：
+  此功能会每隔数秒巡视一遍所有正在运行的爬虫，并根据之前的运行时间计算方差数与均值，推算判断本次运行的时间是否合理，若不合理，则会在几秒钟内终结此任务, 不需要担心爬虫任务永远被杀死了，除非你设置的是单次定时任务，否则爬虫将在下一个周期继续正常启动, 若设置为 Terminator 设置为 "activate"，将会在平台启动时在后台显示日志：
 ```
 [- TERMINATOR -#info] Terminator Started
 ```
-Terminator 在每次巡视后在后台打印日志：
+  Terminator 在每次巡视后在后台打印日志：
 ```
 [- TERMINATOR -#warn] Scan completed
 ```
-若本次巡视发现异常爬虫，且被终结，则巡视日志为：
+  若本次巡视发现异常爬虫，且被终结，则巡视日志为：
 ```
 [- TERMINATOR -#warn] Scan completed, Terminated target: '[default-xinhua-6796090a940b11e98d6854e1adc0a997, default-fifa-6796090a940b11e98d6854e1adc0a997]'
 ```
-日志中 “Terminated target” 为被终结的爬虫的列表字符串，格式为:
+  日志中 “Terminated target” 为被终结的爬虫的列表字符串，格式为:
 ```
   [project-spider-jobid, ...]
 ```
