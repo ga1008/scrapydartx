@@ -3,9 +3,13 @@
 建议使用anaconda环境，请前往[主站](https://www.anaconda.com/distribution/#download-section)或者[清华站点](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D)下载并安装
 
 $ bash Anaconda3-2019.03-Linux-x86_64.sh
+
 在ScrapydArtEnv文件夹内有 ScrapydArt.txt 与 ScrapydArt.yaml 文件，在终端内输入:
+
 $ conda env create -f ScrapydArt.yaml
+
 $ conda activate ScrapydArt
+
 $ pip install -r ScrapydArt.txt
 
 即可解决环境问题
