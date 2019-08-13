@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eed94a31-edd9-4cff-93f3-697a21df2dc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ScrapdArtX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScrapdArtX.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/default_scrapyd.conf" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/default_scrapyd.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/scripts/scrapyd_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/scripts/scrapyd_run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/template/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/template/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/template/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/template/jobs.html" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/template/jobs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/template/img/cd-icon-arrow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/template/img/cd-icon-arrow.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/template/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,12 +26,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="25" />
-    <option name="width" value="1853" />
-    <option name="height" value="1055" />
   </component>
   <component name="ProjectId" id="1PIpno7Tnfgo4Yqt2Zh1GOt21oD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
