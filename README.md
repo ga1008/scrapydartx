@@ -135,8 +135,8 @@ result = requests.post(url='http://localhost:6800/scheduletodb.json', data=post_
   入库成功后，等待几秒钟平台会发现它并且自动计算下次运行时间，后台将显示类似如下语句的日志：
 ```
   [- Scheduler -#info] job default-xinhua is waiting, countdown 540s
-                                                            ↑     ↑                                                       ↑
-                                                     项目名   爬虫名                                 距下次运行秒数
+                               ↑     ↑                           ↑
+                            项目名   爬虫名                  距下次运行秒数
 ```
   查看调度爬虫：
 ```
