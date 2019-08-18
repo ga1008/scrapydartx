@@ -2,11 +2,13 @@
 =====================================================================================================
 
 建议使用anaconda环境，请前往[主站](https://www.anaconda.com/distribution/#download-section)或者[清华站点](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D)下载并安装
+
 ```
 $ bash Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
 在ScrapydArtEnv文件夹内有 ScrapydArt.txt 与 ScrapydArt.yaml 文件，在终端内输入:
+
 ```
 $ conda env create -f ScrapydArt.yaml
 
@@ -22,7 +24,7 @@ pip 安装： pip install scrapydartx
 功能扩展说明：
 --------------------
 
- - 1. 集成了动态调度功能
+1. 集成了动态调度功能
 scrapydartx 现在可以在设置文件里(default_scrapyd.conf)设置调度数据库为mysql 或者是sqlite:
 ```
 ...
