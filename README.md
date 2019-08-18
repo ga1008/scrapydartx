@@ -1,30 +1,28 @@
 本项目fork自ScrapydArt: https://github.com/dequinns/ScrapydArt
 =====================================================================================================
 
-建议使用anaconda环境，请前往[主站](https://www.anaconda.com/distribution/#download-section)或者[清华站点]
-(https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D)下载并安装
-
+建议使用anaconda环境，请前往[主站](https://www.anaconda.com/distribution/#download-section)或者[清华站点](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D)下载并安装
+```
 $ bash Anaconda3-2019.03-Linux-x86_64.sh
+```
 
 在ScrapydArtEnv文件夹内有 ScrapydArt.txt 与 ScrapydArt.yaml 文件，在终端内输入:
-
+```
 $ conda env create -f ScrapydArt.yaml
 
 $ conda activate ScrapydArt
 
 $ pip install -r ScrapydArt.txt
-
+```
 即可解决环境问题
 
-++++++++++++++++++++++++++++++++++++
-
 pip 安装： pip install scrapydartx
-
-++++++++++++++++++++++++++++++++++++
+----------------------------------
 
 功能扩展说明：
+--------------------
 
-1. 集成了动态调度功能
+ - 1. 集成了动态调度功能
 scrapydartx 现在可以在设置文件里(default_scrapyd.conf)设置调度数据库为mysql 或者是sqlite:
 ```
 ...
@@ -81,10 +79,10 @@ result = requests.post(url='http://localhost:6800/scheduletodb.json', data=post_
 上面post_data变量中的 “args” 如有需要请传入一个字典，里面的键和值将自动传递给相应的爬虫（需要提前在爬虫内接收），此项为可选项，可不传。
 
 “status” 参数，数据类型为 int ，值为 0 或者1 或者2 或者3
-0 ： 不启用此条调度
-1 ： 正常启用
-2 ： 高级模式
-3 ： 最高级模式
+ - 0 ： 不启用此条调度
+ - 1 ： 正常启用
+ - 2 ： 高级模式
+ - 3 ： 最高级模式
 设定为1的时候，爬虫会被系统资源限制运行，即当平台检测到系统cpu或者内存严重不足时，延缓数秒到一个周期执行，普通情况下请设置为1，同时如果运行时间异常，将会被平台异常管理机制自动终结
 设定为2的时候，爬虫将忽略系统资源情况，不管系统资源占用多少都会按时执行，但如果运行时间异常，也将会被平台异常管理机制自动终结
 设定为3的时候，爬虫为超级权限模式，不会被异常管理机制终止，同时忽略系统资源状况
