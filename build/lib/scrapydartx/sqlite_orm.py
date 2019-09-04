@@ -1,4 +1,5 @@
 import logging
+from sqlalchemy import text
 from scrapydartx.sqlite_model import *
 
 
@@ -30,10 +31,14 @@ class GetData:
         except Exception as E:
             commit_str = 'commit error : {}'.format(E)
             pass
-        query_str = '{}'.format(model_name)
-        if key_list is not None:
-            query_lis = ['{}.{}'.format(model_name, x) for x in key_list]
-            query_str = ', '.join(query_lis)
+        fields_sql = 'PRAGMA table_info({})'.format(model_dic.get(model_name).__tablename__)
+        fields_raw = session.execute(
+            text(fields_sql)
+        )
+        fields_temp = [x[1] for x in fields_raw]
+        key_list = fields_temp if key_list is None else key_list
+        query_lis = ['{}.{}'.format(model_name, x) for x in key_list]
+        query_str = ', '.join(query_lis)
 
         filter_str = ''
         if filter_dic is not None:
@@ -44,26 +49,42 @@ class GetData:
             format(query=query_str, filters=filter_str, first_or_all=first_or_all)
         try:
             res = eval(get_str)
+            model = model_dic.get(model_name)
+            all_lis = []
+            for y in res:
+                new_t = list()
+                for x in key_list:
+                    temp_str = 'y.{}'.format(x)
+                    temp_res = eval(temp_str)
+                    new_t.append(temp_res)
+                all_lis.append(new_t)
             if not return_model_map:
-                return res
-            model_map = [model_dic[model_name](**dict(zip(x.keys(), x))) for x in res]
+                return all_lis
+            model_map = [model(**dict(zip(x.keys(), x))) for x in res]
             return model_map
         except Exception as E:
             get_sta = 'get data fail :{}'.format(E)
             logging.error(get_sta)
         return None
 
-    def update(self, model_name, update_dic, filter_dic):
+    def update(self, model_name, update_dic, filter_dic, where_combine_method='and'):
         model = model_dic.get(model_name)
         if not model:
             logger.error('model name not in model dict')
             return None
         try:
-            del_res = self.delete_data(model_name=model_name, filter_dic=filter_dic)
-            if del_res:
-                update_dic.update(filter_dic)
-                add_res = self.add(model=model, add_dic=update_dic)
-                return True
+            set_raw = ['{}="{}"'.format(x, v) for x, v in update_dic.items()]
+            set_str = ','.join(set_raw)
+            where_str = ''
+            if filter_dic is not None:
+                where_raw = ['{}="{}"'.format(y, v) for y, v in filter_dic.items()]
+                where_str = ' {} '.format(where_combine_method).join(where_raw)
+                where_str = ' where ' + where_str
+            fields_sql = 'update {} set {}{}'.format(model_dic.get(model_name).__tablename__, set_str, where_str)
+            fields_raw = session.execute(
+                text(fields_sql)
+            )
+            return True
         except Exception as E:
             logger.error('update fail: {}'.format(E))
             return False
@@ -87,5 +108,6 @@ class GetData:
 if __name__ == "__main__":
     from scrapydartx.sqlite_model import *
     db = GetData()
-    res = db.update(model_name='SpiderMonitor', update_dic={'spider': 'spider_2', 'runtime': 10}, filter_dic={'id': 1})
+    # res = db.update(model_name='SpiderMonitor', update_dic={'spider': 'spider_2', 'runtime': 10}, filter_dic={'id': 1})
+    res = db.update(model_name='SpiderScheduleModel', update_dic={'runtime': 0}, filter_dic={'id': 1})
     print(res)

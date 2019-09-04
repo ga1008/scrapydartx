@@ -1,5 +1,5 @@
 import logging
-from scrapydartx.mysql_models import SpiderMonitor, UnormalSpider, TerminatedSpider
+from scrapydartx.mysql_models import SpiderMonitor, UnormalSpider, TerminatedSpider, SpiderScheduleModel
 from scrapydartx.mysql_models import session
 
 
@@ -25,7 +25,7 @@ class GetData:
         try:
             session.commit()
         except Exception as E:
-            logging.warn('start commit fail : {}'.format(E))
+            logging.warning('start commit fail : {}'.format(E))
         if isinstance(field_names, str):
             field_names = [field_names]
         if not isinstance(values, (list, tuple)):
@@ -74,6 +74,7 @@ class GetData:
                 field_str = fields
             else:
                 field_str = ','.join(fields) if fields else '*'
+            where_dic = {k: '=*{}'.format(v) if '*' not in v else v for k, v in where_dic.items()} if where_dic else None
             wheres = '' if where_dic is None else ' where ' + ' and '.join(['{}{}"{}"'.format(x, where_dic.get(x).split('*')[0], where_dic.get(x).split('*')[1]) for x in where_dic])
             sql = 'select %s from %s%s;' % (field_str, model.__tablename__, wheres)
         result = session.execute(sql).fetchall()
@@ -111,24 +112,28 @@ class GetData:
 
     def update_data(self, model, set_dic, where_dic=None, where_combine_method='and'):
         # 'UPDATE cs_user SET gender = "" WHERE id = 4'
-        set_raw = ['{}="{}"'.format(x, set_dic.get(x)) for x in set_dic]
+        set_raw = ['{}="{}"'.format(x, v) for x, v in set_dic.items()]
         set_str = ','.join(set_raw)
         where_str = ''
         if where_dic is not None:
-            where_raw = ['{}="{}"'.format(y, set_dic.get(y)) for y in where_dic]
+            where_raw = ['{}="{}"'.format(y, v) for y, v in where_dic.items()]
             where_str = ' {} '.format(where_combine_method).join(where_raw)
             where_str = ' where ' + where_str
         sql = "update {} set {}{};".format(model.__tablename__, set_str, where_str)
         try:
             session.execute(sql)
             session.commit()
+            return True
         except Exception as E:
             msg = """**** update err: %s""" % E
             logging.error(msg)
+            return False
 
 
 if __name__ == "__main__":
     db = GetData()
+    result = db.get_result(model=SpiderScheduleModel, fields=['project', 'spider'], where_dic={'id': '1'})
+    res = db.update_data(model=SpiderScheduleModel, set_dic={'runtime': 0}, where_dic={'id': 1})
     db.del_data(
             model=SpiderMonitor,
             where_dic={

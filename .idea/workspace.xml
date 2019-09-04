@@ -2,10 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eed94a31-edd9-4cff-93f3-697a21df2dc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/template/img/cd-icon-arrow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/template/img/cd-icon-arrow.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/template/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_orm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_time_scheduling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/scripts/scrapyd_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/scripts/scrapyd_run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_orm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_time_scheduling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/webservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/webservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx.egg-info/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx.egg-info/requires.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx.egg-info/requires.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/VERSION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/mysql_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/mysql_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/mysql_orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/mysql_orm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/mysql_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/mysql_time_scheduling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/scripts/scrapyd_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/scripts/scrapyd_run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/sqlite_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/sqlite_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/sqlite_orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/sqlite_orm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/webservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/webservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,13 +55,14 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scrapydartx" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scrapydartx" />
       <recent name="$PROJECT_DIR$/dist" />
       <recent name="$PROJECT_DIR$/scrapydart" />
     </key>
@@ -57,7 +79,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.scrapyd_run">
+  <component name="RunManager" selected="Python.mysql_orm (1)">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="ScrapdArtX" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,6 +183,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="mysql_orm (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ScrapdArtX" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scrapydartx" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scrapydartx/mysql_orm.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="mysql_orm" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ScrapdArtX" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,7 +249,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sqlite_orm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="sqlite_orm (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ScrapdArtX" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -213,34 +257,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scrapydart" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scrapydartx" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scrapydart/sqlite_orm.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="sqlite_time_scheduling" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ScrapdArtX" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scrapydart" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scrapydart/sqlite_time_scheduling.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scrapydartx/sqlite_orm.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -345,17 +367,17 @@
     <list>
       <item itemvalue="Python.Time_Method" />
       <item itemvalue="Python.mysql_orm" />
-      <item itemvalue="Python.sqlite_orm" />
-      <item itemvalue="Python.sqlite_time_scheduling" />
       <item itemvalue="Python.scrapyd_run" />
+      <item itemvalue="Python.sqlite_orm (1)" />
+      <item itemvalue="Python.mysql_orm (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.mysql_orm (1)" />
+        <item itemvalue="Python.sqlite_orm (1)" />
         <item itemvalue="Python.scrapyd_run" />
         <item itemvalue="Python.mysql_orm" />
         <item itemvalue="Python.Time_Method" />
-        <item itemvalue="Python.sqlite_time_scheduling" />
-        <item itemvalue="Python.sqlite_orm" />
       </list>
     </recent_temporary>
   </component>
@@ -466,6 +488,76 @@
           <url>file://$USER_HOME$/anaconda3/envs/envscrapy/lib/python3.6/site-packages/scrapy/utils/misc.py</url>
           <line>38</line>
           <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>210</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>209</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>89</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>90</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>479</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>169</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
+          <line>170</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_orm.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/mysql_orm.py</url>
+          <line>135</line>
+          <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/mysql_orm.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/mysql_orm.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scrapydartx/mysql_orm.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="121" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

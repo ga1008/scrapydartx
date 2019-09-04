@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime, TIMESTAMP, text, TEXT
+from sqlalchemy import Column, Integer, String, DateTime, TIMESTAMP, TEXT
 from sqlalchemy.orm import sessionmaker
 from twisted.logger import Logger
 import datetime
@@ -49,9 +49,11 @@ class TerminatedSpider(Base):
 class SpiderScheduleModel(Base):
     __tablename__ = 'spider_schedule'
     id = Column(Integer, primary_key=True, autoincrement=True)
+    hash_str = Column(String(255), nullable=False)
     project = Column(String(255), nullable=False)
     spider = Column(String(255), nullable=False)
     schedule = Column(String(255), nullable=False)
+    runtime = Column(Integer, nullable=True)
     args = Column(String(255), nullable=True)
     status = Column(Integer, nullable=False, default=0)
     create_time = Column(String(25))
@@ -66,7 +68,6 @@ model_dic = {
     'TerminatedSpider': TerminatedSpider,
     'UnormalSpider': UnormalSpider,
     'SpiderMonitor': SpiderMonitor,
-    # 'User': User,
 }
 
 

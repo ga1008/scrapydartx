@@ -62,7 +62,7 @@ strict_degree = 4         // >0的任意数，设置严格模式的严格程度�
 扩展平台加入了数个api以方便操控，包括调度数据库的增删改查都可以通过向端口发送请求完成
 增加调度爬虫：
 ```
-$ curl http://localhost:6800/scheduletodb.json -d project=project_name -d spider=spider_name -d schedule=spider_schedule_dict -d args=spider_args_dict -d status=spider_status
+$ curl http://localhost:6800/scheduletodb.json -d project=MyProject -d spider=my_spider -d schedule='{"year":"2019", "month": "08", "day": "28", "hour": "09", "minute": "19", "second": "00"}' -d spider_args='{}' -d status='1'
 ```
 
 这样显得太长而且复用性太差，不建议这样，建议直接使用 python 的 requests 方法发送请求，效果是一样的，如下面的简单例子：
@@ -89,7 +89,7 @@ result = requests.post(url='http://localhost:6800/scheduletodb.json', data=post_
 设定为2的时候，爬虫将忽略系统资源情况，不管系统资源占用多少都会按时执行，但如果运行时间异常，也将会被平台异常管理机制自动终结
 设定为3的时候，爬虫为超级权限模式，不会被异常管理机制终止，同时忽略系统资源状况
 
-“schedule” 的值需要一个字典，类似: 
+“schedule” 的值需要一个字典，或者逗号分割的日期字符串，字典的值类似: 
 ```
 {"second": "*/30"}
 ```
@@ -127,6 +127,13 @@ result = requests.post(url='http://localhost:6800/scheduletodb.json', data=post_
   ```
   意思是每周的周三执行，对的，星期的范围为0~6
   星期可以配合年、月、时、分、秒同时设定，但是不可同时设定星期数和天，否则将只按照天来计算，并忽略星期的设定。
+
+若 schedule 的值为字符串，则需要这样的格式：
+```
+'2019,9,13,16,30,0'     # 2019年9月13日16点30分00秒
+```
+注意全日期是必须的，若中间缺失某个值将无法正常部署。
+这样设置，方法也是只会被执行一次
 
   若入库成功，则返回的result如下：
 ```

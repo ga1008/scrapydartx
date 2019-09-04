@@ -22,10 +22,13 @@ $ pip install -r ScrapydArt.txt
 功能扩展说明：
 1. 集成了动态调度功能
 scrapydart 现在可以在设置文件里(default_scrapyd.conf)设置调度数据库为mysql 或者是sqlite:
+
 ...
 database_type = sqlite
 ...
+
 若设置为mysql 则需要填写mysql 的配置信息, 可以是运行环境中的数据库或者在线数据库:
+
 ...
 mysql_host = 127.0.0.1
 mysql_port = 3306
@@ -33,6 +36,7 @@ mysql_user = root
 mysql_password = mysql
 mysql_db = scrapydartTest
 ...
+
 其中mysql_db是指使用 mysql 的哪一个数据库
 若database_type设置为 sqlite 则不需要设置这些
 
@@ -51,7 +55,8 @@ strict_degree = 4         // >0的任意数，设置严格模式的严格程度�
 下面介绍将爬虫加入到调度数据库的方法
 扩展平台加入了数个api以方便操控，包括调度数据库的增删改查都可以通过向端口发送请求完成
 增加调度爬虫：
-$ curl http://localhost:6800/scheduletodb.json -d project=project_name -d spider=spider_name -d schedule=spider_schedule_dict -d args=spider_args_dict -d status=spider_status
+
+$ curl http://localhost:6800/scheduletodb.json -d project=MyProject -d spider=my_spider -d schedule='{"year":"2019", "month": "08", "day": "28", "hour": "09", "minute": "19", "second": "00"}' -d spider_args='{}' -d status='1'
 
 这样显得太长而且复用性太差，不建议这样，建议直接使用 python 的 requests 方法发送请求，效果是一样的，如下面的简单例子：
 import requests

@@ -1,3 +1,4 @@
+import hashlib
 from copy import copy
 import traceback
 import pymysql
@@ -135,11 +136,10 @@ class UpdateDbSchedule(WsResource):
         id = args.pop('id')
         set_dic = args.copy()
         where_dic = {'id': id}
-        # global lock
         lock.acquire()
         try:
             if database_type == 'mysql':
-                database_connector.update_data(model=SpiderScheduleModel, set_dic=set_dic,where_dic=where_dic)
+                database_connector.update_data(model=SpiderScheduleModel, set_dic=set_dic, where_dic=where_dic)
             else:
                 database_connector.update(model_name='SpiderScheduleModel', update_dic=set_dic, filter_dic=where_dic)
             sta = 'ok'
@@ -163,9 +163,9 @@ class ListDbSchedule(WsResource):
         try:
             lock.acquire()
             if database_type == 'mysql':
-                res = database_connector.get_result(model=SpiderScheduleModel, fields=['id', 'project', 'spider', 'schedule', 'args', 'status'])
+                res = database_connector.get_result(model=SpiderScheduleModel, fields=['id', 'project', 'spider', 'schedule', 'args', 'runtime', 'status'])
             else:
-                res = database_connector.get(model_name='SpiderScheduleModel', key_list=['id', 'project', 'spider', 'schedule', 'args', 'status'])
+                res = database_connector.get(model_name='SpiderScheduleModel', key_list=['id', 'project', 'spider', 'schedule', 'args', 'runtime', 'status'])
             lock.release()
         except Exception as E:
             logger.info('something wrong when getting database datas: {}'.format(E))
@@ -176,6 +176,7 @@ class ListDbSchedule(WsResource):
                              'spider': x.spider,
                              'schedule': x.schedule,
                              'args': x.args,
+                             'runtime': x.runtime,
                              'status': x.status,
                              # 'create_time': x.create_time.strftime("%Y-%m-%d %H:%M:%S"),
                              # 'update_time': x.update_time.strftime("%Y-%m-%d %H:%M:%S"),
@@ -200,23 +201,37 @@ class ScheduleToDb(WsResource):
 
     @decorator_auth
     def render_POST(self, txrequest):
+
         args = native_stringify_dict(copy(txrequest.args), keys_only=False)
         project = args['project'][0]
         spider = args['spider'][0]
         schedule = pymysql.escape_string(args['schedule'][0])
-        spider_args = pymysql.escape_string(args['spider_args'][0])
-        status = args['status'][0]
-        fields = ['project', 'spider', 'schedule', 'args', 'status']
-        values = [project, spider, schedule, spider_args, status]
+        spider_args = pymysql.escape_string(args.get('spider_args', [{}])[0])
+        status = args.get('status', [1])[0]
+        runtime = args.get('runtime', [3471292800])[0]
+        hash_str = _hash_str(project + spider + schedule)
+
+        fields = ['hash_str', 'project', 'spider', 'schedule', 'args', 'runtime', 'status']
+        values = [hash_str, project, spider, schedule, spider_args, runtime, status]
         insert_sta = 'error'
         lock.acquire()
         if database_type == 'mysql':
-            if database_connector.insert_data(model=SpiderScheduleModel, field_names=fields, values=values):
-                insert_sta = 'ok'
+            db_hashes_raw = database_connector.get_result(model=SpiderScheduleModel, fields=['hash_str'])
+            db_hashes = [x.hash_str for x in db_hashes_raw] if db_hashes_raw else set()
+            if hash_str not in db_hashes:
+                if database_connector.insert_data(model=SpiderScheduleModel, field_names=fields, values=values):
+                    insert_sta = 'ok'
+            else:
+                insert_sta = 'the schedule is already exist'
         else:
-            add_d = {x: values[fields.index(x)] for x in fields}
-            if database_connector.add(model=SLM_SpiderScheduleModel, add_dic=add_d):
-                insert_sta = 'ok'
+            db_hashes_raw = database_connector.get(model_name='SpiderScheduleModel', key_list=['hash_str'])
+            db_hashes = [x.hash_str for x in db_hashes_raw] if db_hashes_raw else set()
+            if hash_str not in db_hashes:
+                add_d = {x: values[fields.index(x)] for x in fields}
+                if database_connector.add(model=SLM_SpiderScheduleModel, add_dic=add_d):
+                    insert_sta = 'ok'
+            else:
+                insert_sta = 'the schedule is already exist'
         lock.release()
         return {"node_name": self.root.nodename, "status": insert_sta}
 
@@ -578,3 +593,9 @@ class GetJobs(WsResource):
             if project is None or s.project == project
         ]
         return finished
+
+
+def _hash_str(data):
+    md5 = hashlib.md5()
+    md5.update(str(data).encode('utf-8'))
+    return md5.hexdigest()

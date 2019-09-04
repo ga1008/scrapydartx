@@ -1,4 +1,6 @@
-Twisted>=8.0
+Twisted==18.9
 Scrapy>=1.0
 six
 enum-compat
+pymysql
+numpy

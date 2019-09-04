@@ -16,7 +16,7 @@ def make_engine(user='root',
                   host='127.0.0.1',
                   port=3306,
                   db='scrapydartdb',
-                  charset='utf8'):
+                  charset='UTF8MB4'):
     # user = 'quinns'
     # passwd = 'Quinns3000'
     # host = '192.168.0.61'
@@ -35,7 +35,7 @@ def make_engine(user='root',
     if not db_show_res:
         try:
             cursor.execute(
-                "Create Database If Not Exists {} Character Set UTF8".format(db))
+                "Create Database If Not Exists {} Character Set UTF8MB4".format(db))
         except Exception as E:
             logger.error('database creation fail, please check connection info')
     create_db.close()
@@ -56,7 +56,7 @@ class SpiderMonitor(Base):
     runtime = Column(String(50))
     job_id = Column(String(100))
     create_time = Column(DateTime, nullable=False, server_default=text('NOW()'))
-    update_time = Column(TIMESTAMP(True), nullable=False)
+    update_time = Column(DateTime, nullable=False, server_default=text('NOW()'))
 
     def to_dict(self):
         return {c.name: getattr(self, c.name, None) for c in self.__table__.columns}
@@ -67,7 +67,7 @@ class UnormalSpider(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     spider = Column(String(255))
     create_time = Column(DateTime, nullable=False, server_default=text('NOW()'))
-    update_time = Column(TIMESTAMP(True), nullable=False)
+    update_time = Column(DateTime, nullable=False, server_default=text('NOW()'))
 
     def to_dict(self):
         return {c.name: getattr(self, c.name, None) for c in self.__table__.columns}
@@ -79,7 +79,7 @@ class TerminatedSpider(Base):
     spider = Column(String(255))
     job_id = Column(String(255))
     create_time = Column(DateTime, nullable=False, server_default=text('NOW()'))
-    update_time = Column(TIMESTAMP(True), nullable=False)
+    update_time = Column(DateTime, nullable=False, server_default=text('NOW()'))
 
     def to_dict(self):
         return {c.name: getattr(self, c.name, None) for c in self.__table__.columns}
@@ -88,15 +88,17 @@ class TerminatedSpider(Base):
 class SpiderScheduleModel(Base):
     __tablename__ = 'spider_schedule'
     id = Column(Integer, primary_key=True, autoincrement=True)
+    hash_str = Column(String(255), nullable=False)
     project = Column(String(255), nullable=False)
     spider = Column(String(255), nullable=False)
     schedule = Column(LONGTEXT, nullable=False)
     args = Column(String(255), nullable=True)
+    runtime = Column(Integer, nullable=True)
     create_time = Column(
         DateTime,
         nullable=False,
         server_default=text('NOW()'))
-    update_time = Column(TIMESTAMP(True), nullable=False)
+    update_time = Column(DateTime, nullable=False, server_default=text('NOW()'))
     status = Column(Integer, nullable=False, default=0)
 
     def to_dict(self):

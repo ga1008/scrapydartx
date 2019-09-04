@@ -1,3 +1,4 @@
+import re
 import time
 import json
 import threading
@@ -24,6 +25,32 @@ class TimeSchedule:
         self.projects = None
         self.db_lock = lock
         self.ts_lock = threading.Lock()
+        self._keys_set = {
+            "year",
+            "month",
+            "day",
+            "week",
+            "hour",
+            "minute",
+            "second",
+            "y",
+            "m",
+            "d",
+            "w",
+            "H",
+            "M",
+            "S",
+        }
+        self._keys_dic = {
+            "y": "year",
+            "m": "month",
+            "d": "day",
+            "w": "week",
+            "H": "hour",
+            "M": "minute",
+            "S": "second",
+        }
+        self._keys_set_lis = [[y for y in x] for x in self._keys_set]
         self.CPU_THRESHOLD = 93
         self.MEMORY_THRESHOLD = 96
         self.schedule_logger = Logger(namespace='- Scheduler -')
@@ -47,25 +74,41 @@ class TimeSchedule:
     def task_scheduler(self):
         self.ts_lock.acquire(blocking=True)
         self.db_lock.acquire()
-        db_result = self.db.get(model_name='SpiderScheduleModel', key_list=['project', 'spider', 'schedule', 'args', 'status'])
+        db_result = self.db.get(model_name='SpiderScheduleModel',
+                                key_list=['project', 'spider', 'schedule', 'args', 'runtime', 'status'])
         self.db_lock.release()
         self.ts_lock.release()
         schedule_list_raw = [
-            {'project': x.project, 'spider': x.spider, 'schedule': x.schedule, 'args': x.args, 'status': x.status}
+            {'project': x.project, 'spider': x.spider, 'schedule': x.schedule, 'args': x.args, 'runtime': x.runtime,
+             'status': x.status}
             for x in db_result if int(x.status) != 0
         ] if db_result else []
         schedule_sta = False
         if schedule_list_raw:
             for each_schedule in schedule_list_raw:
                 project = each_schedule.get('project')
-                if project in self.projects:
+                runtime = int(each_schedule.get('runtime'))
+                if project in self.projects and runtime > 0:
                     schedule = each_schedule.get('schedule').replace('\\', '')
+
+                    if any([x in schedule for x in self._keys_set]):
+                        try:
+                            schedule = json.loads(schedule)
+                        except:
+                            schedule = eval(schedule)
                     try:
-                        schedule = json.loads(schedule)
-                    except:
-                        schedule = eval(schedule)
-                    try:
-                        next_time_sep = self.cal_time_sep(**schedule)
+                        if isinstance(schedule, dict):
+                            for key in schedule.keys():
+                                if key not in self._keys_set:
+                                    mean_key = self._check_key(key)
+                                    raise ValueError(
+                                        'found "{}" in your schedule dict, maybe you mean "{}"'.format(key, mean_key))
+                                if key in self._keys_dic:
+                                    val = schedule.pop(key)
+                                    schedule[self._keys_dic[key]] = val
+                            next_time_sep = self.cal_time_sep(**schedule)
+                        else:
+                            next_time_sep = self.cal_time_sep(schedule_str=schedule, is_str=True)
                         next_time_sep = int(next_time_sep) + 1
                         if next_time_sep > 1:
                             each_schedule['schedule'] = next_time_sep
@@ -73,7 +116,7 @@ class TimeSchedule:
                             self.ts_lock.acquire(blocking=True)
                             if self.spider_task_dic.get(item) != 'waiting':
                                 self.spider_task_dic[item] = 'waiting'
-                                t = threading.Thread(target=self.poster, args=(each_schedule, ))
+                                t = threading.Thread(target=self.poster, args=(each_schedule,))
                                 try:
                                     t.start()
                                 except Exception as THError:
@@ -124,12 +167,15 @@ class TimeSchedule:
             self.schedule_logger.error('job project: {}, spider: {} post fail!'.format(project, spider))
             spider_status = 'error'
         self.ts_lock.acquire(blocking=True)
+        if spider_status == 'ok':
+            self._run_countdown(project=project, spider=spider)
         self.spider_task_dic[item] = spider_status
         self.ts_lock.release()
 
     def spiders_runtime(self, project, spider):
         self.db_lock.acquire()
-        res = self.db.get(model_name='SpiderMonitor', key_list=['runtime'], filter_dic={'project': project, 'spider': spider})
+        res = self.db.get(model_name='SpiderMonitor', key_list=['runtime'],
+                          filter_dic={'project': project, 'spider': spider})
         self.db_lock.release()
         spider_list = [int(x.runtime) for x in res if x.runtime.isdigit()] if res else [0]
         return sum(spider_list) / len(spider_list)
@@ -144,19 +190,24 @@ class TimeSchedule:
         return projects
 
     def cal_time_sep(self,
-            year='*',
-            month='*',
-            day='*',
-            week='*',
-            hour='*',
-            minute='*',
-            second='*',
-            ):
+                     year='*',
+                     month='*',
+                     day='*',
+                     week='*',
+                     hour='*',
+                     minute='*',
+                     second='*',
+                     schedule_str=None,
+                     is_str=False
+                     ):
         """
             "%Y-%m-%d %H:%M:%S %w"
 
         """
-
+        if is_str:
+            s = [int(x.strip()) for x in schedule_str.split(',')]
+            time_sep = (datetime.datetime(s[0], s[1], s[2], s[3], s[4], s[5]) - datetime.datetime.now()).total_seconds()
+            return time_sep
         y = int(time.strftime("%Y", time.localtime()))
         if year != '*' and '*' in year:
             y = int(year.split('/')[-1]) + y
@@ -257,7 +308,9 @@ class TimeSchedule:
                                     m = m - 12
             elif second.isdigit():
                 S = int(second)
-            time_sep = eval("(datetime.datetime({},{},{}, {},{},{}) - datetime.datetime.now()).total_seconds()".format(y,m,d, H,M,S))
+            time_sep = eval(
+                "(datetime.datetime({},{},{}, {},{},{}) - datetime.datetime.now()).total_seconds()".format(y, m, d, H,
+                                                                                                           M, S))
 
         else:
             week_in_this_year = int(time.strftime("%U", time.localtime()))
@@ -356,7 +409,9 @@ class TimeSchedule:
                                 y += 1
                                 week_in_this_year = week_in_this_year - 53
             m, d = self.get_month_and_days_by_week(year=y, week_in_this_year=week_in_this_year, week=w)
-            time_sep = eval("(datetime.datetime({},{},{}, {},{},{}) - datetime.datetime.now()).total_seconds()".format(y, m, d, H, M, S))
+            time_sep = eval(
+                "(datetime.datetime({},{},{}, {},{},{}) - datetime.datetime.now()).total_seconds()".format(y, m, d, H,
+                                                                                                           M, S))
 
         return time_sep
 
@@ -408,6 +463,28 @@ class TimeSchedule:
             if not is_cpu_ok or not is_memo_ok:
                 is_pass = False
         return is_pass
+
+    def _check_key(self, key):
+        key_lis = [x for x in key]
+        count_dic = dict()
+        for ksl in self._keys_set_lis:
+            o_key = ''.join(ksl)
+            score = 0
+            for k in key_lis:
+                if k in ksl:
+                    score += 1
+            count_dic[o_key] = score
+        best_math = sorted(count_dic, key=count_dic.__getitem__, reverse=True)[0]
+        return best_math
+
+    def _run_countdown(self, project, spider):
+        db_schedule = self.db.get(model_name='SpiderScheduleModel', key_list=['id', 'runtime'],
+                                  filter_dic={'project': project, 'spider': spider})
+        run_time_in_db = [x.runtime for x in db_schedule][0] if db_schedule else 0
+        the_id = [x.id for x in db_schedule][0] if db_schedule else None
+        if run_time_in_db > 0 and the_id is not None:
+            rt = int(run_time_in_db) - 1
+            self.db.update(model_name='SpiderScheduleModel', update_dic={"runtime": rt}, filter_dic={"id": the_id})
 
 
 if __name__ == "__main__":

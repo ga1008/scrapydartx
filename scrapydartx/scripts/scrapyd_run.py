@@ -22,6 +22,8 @@ def _update_config_file():
     f.close()
     default_conf_str = ''.join(default_conf)
     show_lis = list()
+    show_lis.append(_re_find_from_conf(default_conf, '^bind_address.+'))
+    show_lis.append(_re_find_from_conf(default_conf, '^http_port.+'))
     show_lis.append(_re_find_from_conf(default_conf, '^Terminator.+'))
     show_lis.append(_re_find_from_conf(default_conf, '^database_type.+'))
     show_lis.append(_re_find_from_conf(default_conf, '^mysql_host.+'))
@@ -32,11 +34,15 @@ def _update_config_file():
     show_lis.append(_re_find_from_conf(default_conf, '^clear_up_database_when_start.+'))
     print('The default settings are as follows: ')
     for i, st in enumerate(show_lis):
+        if i == 0:
+            print('---- server setting ----')
+        elif i == 2:
+            print('---- Extend setting ----')
         print(i, st)
     print('Select the serial number of the option you want to change, separate with ","')
     print('example: 1,2,4')
     print('what it means? https://shimo.im/docs/9VZttqLE0xgbnxVg/read')
-    update_nums = input('(let it empty to set as default): ')
+    update_nums = input('(left it empty to set as default): ')
     if update_nums:
         try:
             num_lis = [int(x.strip(' ')) for x in update_nums.split(',')]
@@ -47,7 +53,7 @@ def _update_config_file():
             option = show_lis[num].split(':')[0].strip(' ')
             set_op = input('{}: '.format(option))
             default_conf_str = re.sub(r'(?P<asd>\s{} += +).+\n'.format(option), r'\g<asd>{}\n'.format(set_op), default_conf_str)
-        print('set compete, saving to default_scrapyd.conf ...')
+        print('set complete, saving to default_scrapyd.conf ...')
         os.remove(base_path)
         wf = open(base_path, 'w')
         wf.write(default_conf_str)

@@ -13,14 +13,15 @@ except ImportError:
 
 setup_args = {
     'name': 'scrapydartx',
-    'version': '1.2.0.5',
+    'version': '1.2.1.0',
     'url': 'https://github.com/GuardianGH/scrapydartx',
     'description': 'a extension from ScrapydArt',
-    # 'long_description': open('README.md', encoding="utf-8").read(),
+    'long_description': open('README.md', encoding="utf-8").read(),
     'author': 'Scrapy developers',
     'author_email': 'zhling2012@live.com',
     'maintainer': 'Scrapy developers',
     'maintainer_email': 'info@scrapy.org',
+    'long_description_content_type': "text/markdown",
     'LICENSE': 'BSD',
     'packages': ['scrapydartx'],
     'include_package_data': True,
@@ -43,10 +44,12 @@ setup_args = {
 
 if using_setuptools:
     setup_args['install_requires'] = [
-        'Twisted>=8.0',
+        'Twisted==18.9',
         'Scrapy>=1.0',
         'six',
         'enum-compat',
+        'pymysql',
+        'numpy',
     ]
     setup_args['entry_points'] = {'console_scripts': [
         'scrapydartx = scrapydartx.scripts.scrapyd_run:main'
