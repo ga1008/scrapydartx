@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eed94a31-edd9-4cff-93f3-697a21df2dc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/VERSION" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_orm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/mysql_time_scheduling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/scripts/scrapyd_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/scripts/scrapyd_run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_orm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_time_scheduling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/webservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/webservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx.egg-info/requires.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx.egg-info/requires.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/VERSION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/mysql_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/mysql_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/mysql_orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/mysql_orm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/mysql_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/mysql_time_scheduling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/scripts/scrapyd_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/scripts/scrapyd_run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/sqlite_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/sqlite_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/sqlite_orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/sqlite_orm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/webservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/webservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
