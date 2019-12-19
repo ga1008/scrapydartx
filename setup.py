@@ -13,7 +13,7 @@ except ImportError:
 
 setup_args = {
     'name': 'scrapydartx',
-    'version': '1.2.1.0',
+    'version': '1.3.0',
     'url': 'https://github.com/GuardianGH/scrapydartx',
     'description': 'a extension from ScrapydArt',
     'long_description': open('README.md', encoding="utf-8").read(),
@@ -50,6 +50,9 @@ if using_setuptools:
         'enum-compat',
         'pymysql',
         'numpy',
+        'psutil',
+        'sqlalchemy',
+        'requests',
     ]
     setup_args['entry_points'] = {'console_scripts': [
         'scrapydartx = scrapydartx.scripts.scrapyd_run:main'

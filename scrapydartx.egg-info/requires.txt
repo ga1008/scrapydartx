@@ -4,3 +4,6 @@ six
 enum-compat
 pymysql
 numpy
+psutil
+sqlalchemy
+requests

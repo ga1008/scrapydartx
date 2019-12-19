@@ -1,4 +1,5 @@
 import hashlib
+import json
 from copy import copy
 import traceback
 import pymysql
@@ -205,8 +206,8 @@ class ScheduleToDb(WsResource):
         args = native_stringify_dict(copy(txrequest.args), keys_only=False)
         project = args['project'][0]
         spider = args['spider'][0]
-        schedule = pymysql.escape_string(args['schedule'][0])
-        spider_args = pymysql.escape_string(args.get('spider_args', [{}])[0])
+        schedule = json.dumps(json.loads(args['schedule'][0]))
+        spider_args = json.dumps(json.loads(args.get('spider_args', ['{}'])[0]))
         status = args.get('status', [1])[0]
         runtime = args.get('runtime', [3471292800])[0]
         hash_str = _hash_str(project + spider + schedule)

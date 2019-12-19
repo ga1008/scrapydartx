@@ -75,11 +75,11 @@ class TimeSchedule:
         self.ts_lock.acquire(blocking=True)
         self.db_lock.acquire()
         db_result = self.db.get(model_name='SpiderScheduleModel',
-                                key_list=['project', 'spider', 'schedule', 'args', 'runtime', 'status'])
+                                key_list=['hash_str', 'project', 'spider', 'schedule', 'args', 'runtime', 'status'])
         self.db_lock.release()
         self.ts_lock.release()
         schedule_list_raw = [
-            {'project': x.project, 'spider': x.spider, 'schedule': x.schedule, 'args': x.args, 'runtime': x.runtime,
+            {'hash_str': x.hash_str, 'project': x.project, 'spider': x.spider, 'schedule': x.schedule, 'args': x.args, 'runtime': x.runtime,
              'status': x.status}
             for x in db_result if int(x.status) != 0
         ] if db_result else []
@@ -89,7 +89,7 @@ class TimeSchedule:
                 project = each_schedule.get('project')
                 runtime = int(each_schedule.get('runtime'))
                 if project in self.projects and runtime > 0:
-                    schedule = each_schedule.get('schedule').replace('\\', '')
+                    schedule = each_schedule.get('schedule')
 
                     if any([x in schedule for x in self._keys_set]):
                         try:
@@ -122,24 +122,28 @@ class TimeSchedule:
                                 except Exception as THError:
                                     self.schedule_logger.warn('start new job error [ {} ]: {}'.format(item, THError))
                             self.ts_lock.release()
-                    except ValueError:
-                        self.schedule_logger.error('spider runtime schedule error, please check the database')
+                    except ValueError as V:
+                        self.schedule_logger.error('spider runtime schedule error, please check the database: {}'.format(V))
             schedule_sta = True
         return schedule_sta
 
     def poster(self, dic):
+        hash_str = dic.get('hash_str')
         status = int(dic.pop('status'))
         project = dic.get('project')
         spider = dic.get('spider')
         job_str = " %s-%s " % (project, spider)
-        args = dic.get('args').replace('\\', '')
-        if args:
+        args = dic.get('args')
+        try:
+            args = json.loads(args)
+        except:
             args = eval(args)
         wait_time = dic.get('schedule')
         item = '{}-{}'.format(project, spider)
         if project and spider:
             data = {'project': project, 'spider': spider, 'un': self.user_name, 'pwd': self.user_password}
             if args:
+                args = self._spider_args_method(args, hash_str)
                 data.update(args)
             self.schedule_logger.info('job {} is waiting, countdown {}s'.format(item, wait_time))
             time.sleep(wait_time - 1)
@@ -171,6 +175,26 @@ class TimeSchedule:
             self._run_countdown(project=project, spider=spider)
         self.spider_task_dic[item] = spider_status
         self.ts_lock.release()
+
+    def _spider_args_method(self, args, hash_str):
+        args_raw = args.copy()
+        if args:
+            method = args.pop('method', 'normal')
+            if method == 'auto_increment':
+                next_args = {k: str(int(v)+1) if isinstance(v, int) or (isinstance(v, str) and v.isdigit()) else v for k, v in args.items()}
+            elif isinstance(method, dict):
+                ex_md = method.get('expression')
+                fc_md = method.get('function')
+                if ex_md:
+                    next_args = eval(ex_md)
+                if fc_md:
+                    exec(fc_md)
+            else:
+                next_args = args
+            next_args.update({'method': method})
+            self.db.update('SpiderScheduleModel', update_dic={'args': next_args}, filter_dic={"hash_str": hash_str})
+            return args
+        return args_raw
 
     def spiders_runtime(self, project, spider):
         self.db_lock.acquire()
