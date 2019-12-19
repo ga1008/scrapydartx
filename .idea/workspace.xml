@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eed94a31-edd9-4cff-93f3-697a21df2dc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/mysql_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/mysql_time_scheduling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +43,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/scrapydartx" />
       <recent name="$PROJECT_DIR$/dist" />
       <recent name="$PROJECT_DIR$/scrapydart" />
@@ -278,6 +279,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="658" y="259" width="672" height="678" key="search.everywhere.popup/70.27.1850.1053@70.27.1850.1053" timestamp="1576660626857" />
+    <state x="720" y="449" width="540" height="215" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1576720890889">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="720" y="449" width="540" height="215" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1576720890889" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

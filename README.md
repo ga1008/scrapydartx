@@ -7,14 +7,10 @@
 $ bash Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
-#### 在ScrapydArtEnv文件夹内有 ScrapydArt.txt 与 ScrapydArt.yaml 文件，在终端内输入:
+#### pip 依赖文件为 req.txt, 直接安装:
 
 ```
-$ conda env create -f ScrapydArt.yaml
-
-$ conda activate ScrapydArt
-
-$ pip install -r ScrapydArt.txt
+$ pip install -r req.txt
 ```
 #### 即可解决环境问题
 
