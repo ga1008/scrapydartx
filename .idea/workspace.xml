@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eed94a31-edd9-4cff-93f3-697a21df2dc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ScrapdArtX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScrapdArtX.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default-NSConflict-GuardianJGY-linux4.15.0-54-generic.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default-NSConflict-GuardianJGY-linux4.15.0-54-generic.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/ScrapydArtEnv/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/ScrapydArtEnv/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/sqlite_time_scheduling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/scrapydartx/webservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/scrapydartx/webservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/scrapydartx-1.2.1.0-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/scrapydartx-1.2.1.0.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx.egg-info/requires.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx.egg-info/requires.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapydartx/webservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/webservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapydartx/mysql_time_scheduling.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapydartx/mysql_time_scheduling.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,16 +331,6 @@
           <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
           <line>284</line>
           <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
-          <line>120</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
-          <line>124</line>
-          <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scrapydartx/sqlite_time_scheduling.py</url>
