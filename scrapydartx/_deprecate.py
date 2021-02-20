@@ -1,5 +1,4 @@
 import warnings
-import inspect
 
 
 class ScrapydDeprecationWarning(Warning):

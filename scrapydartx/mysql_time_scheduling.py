@@ -75,11 +75,13 @@ class TimeSchedule:
         self.ts_lock.acquire(blocking=True)
         self.db_lock.acquire()
         db_result = self.db.get_result(model=SpiderScheduleModel,
-                                       fields=['hash_str', 'project', 'spider', 'schedule', 'args', 'runtime', 'status'])
+                                       fields=['hash_str', 'project', 'spider', 'schedule', 'args', 'runtime',
+                                               'status'])
         self.db_lock.release()
         self.ts_lock.release()
         schedule_list_raw = [
-            {'hash_str': x.hash_str, 'project': x.project, 'spider': x.spider, 'schedule': x.schedule, 'args': x.args, 'runtime': x.runtime, 'status': x.status}
+            {'hash_str': x.hash_str, 'project': x.project, 'spider': x.spider, 'schedule': x.schedule, 'args': x.args,
+             'runtime': x.runtime, 'status': x.status}
             for x in db_result if int(x.status) != 0
         ] if db_result else []
         schedule_sta = False
@@ -121,7 +123,8 @@ class TimeSchedule:
                                     self.schedule_logger.warn('no new jobs : {}'.format(APError))
                             self.ts_lock.release()
                     except ValueError as V:
-                        self.schedule_logger.error('spider runtime schedule error, please check the database: {}'.format(V))
+                        self.schedule_logger.error(
+                            'spider runtime schedule error, please check the database: {}'.format(V))
             schedule_sta = True
         return schedule_sta
 
@@ -176,8 +179,10 @@ class TimeSchedule:
         args_raw = args.copy()
         if args:
             method = args.pop('method', 'normal')
+            next_args = {}
             if method == 'auto_increment':
-                next_args = {k: str(int(v)+1) if isinstance(v, int) or (isinstance(v, str) and v.isdigit()) else v for k, v in args.items()}
+                next_args = {k: str(int(v) + 1) if isinstance(v, int) or (isinstance(v, str) and v.isdigit()) else v for
+                             k, v in args.items()}
             elif isinstance(method, dict):
                 ex_md = method.get('expression')
                 fc_md = method.get('function')
@@ -188,7 +193,8 @@ class TimeSchedule:
             else:
                 next_args = args
             next_args.update({'method': method})
-            self.db.update_data(model=SpiderScheduleModel, set_dic={'args': next_args}, where_dic={"hash_str": hash_str})
+            self.db.update_data(model=SpiderScheduleModel, set_dic={'args': next_args},
+                                where_dic={"hash_str": hash_str})
             return args
         return args_raw
 
@@ -502,13 +508,13 @@ class TimeSchedule:
         return best_math
 
     def _run_countdown(self, project, spider):
-        db_schedule = self.db.get_result(model=SpiderScheduleModel, fields=['id', 'runtime'], where_dic={'project': project, 'spider': spider})
+        db_schedule = self.db.get_result(model=SpiderScheduleModel, fields=['id', 'runtime'],
+                                         where_dic={'project': project, 'spider': spider})
         run_time_in_db = [x.runtime for x in db_schedule][0] if db_schedule else 0
         the_id = [x.id for x in db_schedule][0] if db_schedule else None
         if run_time_in_db > 0 and the_id is not None:
             rt = int(run_time_in_db) - 1
             self.db.update_data(model=SpiderScheduleModel, set_dic={"runtime": rt}, where_dic={"id": the_id})
-
 
 # if __name__ == "__main__":
 # insert_schedule_into_database(values=['P1', 'spider_2', "{'second': '*/30'}", '1'])

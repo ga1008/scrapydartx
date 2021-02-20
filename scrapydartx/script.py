@@ -2,7 +2,7 @@
 
 import sys
 import os
-from cStringIO import StringIO
+from io import StringIO
 
 from twisted.python import log
 from twisted.internet import reactor

@@ -11,11 +11,11 @@ from scrapydartx import __version__
 from .interfaces import IPoller, IEnvironment
 from .scrapydart_extend import run_extend, set_default_config
 from scrapydartx import global_values as glv
+
 lock = glv.get_value(key='lock')
 
 
 class Launcher(Service):
-
     name = 'launcher'
 
     def __init__(self, config, app):

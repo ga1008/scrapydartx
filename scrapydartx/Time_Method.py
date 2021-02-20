@@ -1,5 +1,4 @@
 import time
-import datetime
 
 
 def time_pass(date_time):

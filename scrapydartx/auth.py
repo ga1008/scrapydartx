@@ -1,7 +1,6 @@
 import configparser
-import os
-import json
 import logging
+import os
 
 cps = configparser.ConfigParser()
 

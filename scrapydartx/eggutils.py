@@ -1,4 +1,5 @@
-import os, pkg_resources
+import os
+import pkg_resources
 
 
 def activate_egg(eggpath):

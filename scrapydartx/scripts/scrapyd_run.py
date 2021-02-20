@@ -16,7 +16,8 @@ def main():
 
 
 def _update_config_file():
-    base_path = os.path.realpath(scrapydartx.__file__).replace('__init__.py', 'default_scrapyd.conf')
+    # base_path = os.path.realpath(scrapydartx.__file__).replace('__init__.py', 'default_scrapyd.conf')
+    base_path = os.path.join('/', os.path.split(os.path.abspath(__file__))[0].strip('/').strip('scripts'), 'default_scrapyd.conf')
     f = open(base_path, 'r')
     default_conf = f.readlines()
     f.close()

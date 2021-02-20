@@ -1,6 +1,9 @@
+import datetime
 import logging
+
 from sqlalchemy import text
-from scrapydartx.sqlite_model import *
+
+from scrapydartx.sqlite_model import session, model_dic, logger, SpiderMonitor, SpiderScheduleModel, UnormalSpider, TerminatedSpider
 
 
 class GetData:
@@ -105,9 +108,9 @@ class GetData:
             return False
 
 
-if __name__ == "__main__":
-    from scrapydartx.sqlite_model import *
-    db = GetData()
-    # res = db.update(model_name='SpiderMonitor', update_dic={'spider': 'spider_2', 'runtime': 10}, filter_dic={'id': 1})
-    res = db.update(model_name='SpiderScheduleModel', update_dic={'runtime': 0}, filter_dic={'id': 1})
-    print(res)
+# if __name__ == "__main__":
+#     from scrapydartx.sqlite_model import *
+#     db = GetData()
+#     # res = db.update(model_name='SpiderMonitor', update_dic={'spider': 'spider_2', 'runtime': 10}, filter_dic={'id': 1})
+#     res = db.update(model_name='SpiderScheduleModel', update_dic={'runtime': 0}, filter_dic={'id': 1})
+#     print(res)

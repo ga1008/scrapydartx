@@ -8,6 +8,7 @@ from scrapydartx import get_application
 from scrapydartx.interfaces import IEggStorage
 from scrapydartx.eggutils import activate_egg
 
+
 @contextmanager
 def project_environment(project):
     app = get_application()

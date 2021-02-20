@@ -1,10 +1,8 @@
 import glob
-import sys
 from io import StringIO
 from os.path import expanduser
 from pkgutil import get_data
 
-import re
 from scrapy.utils.conf import closest_scrapy_cfg
 from six.moves.configparser import ConfigParser, NoSectionError, NoOptionError
 

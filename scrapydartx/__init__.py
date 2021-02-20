@@ -1,16 +1,16 @@
-from scrapydartx.config import Config
-from scrapy.utils.misc import load_object
-import pkgutil
-from scrapydartx import global_values as glv
 from threading import RLock
 
+from scrapy.utils.misc import load_object
+
+from scrapydartx import global_values as glv
+from scrapydartx.config import Config
 
 glv._init()
 lock = RLock()
 glv.set_value(key='lock', value=lock)
 glv.set_value(key='top_level', value=set())
 
-__version__ = pkgutil.get_data(__package__, 'VERSION').decode('ascii').strip()
+__version__ = '1.3.5'
 version_info = tuple(__version__.split('.')[:3])
 name = "scrapydartx"
 

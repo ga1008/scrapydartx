@@ -1,12 +1,10 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import Column, Integer, String
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime, TIMESTAMP, TEXT
 from sqlalchemy.orm import sessionmaker
 from twisted.logger import Logger
-import datetime
 
-
-engine = create_engine('sqlite:///sqlite_2.db?check_same_thread=False', echo=False)
+engine = create_engine('sqlite:///sqlite_scrapyartx.db?check_same_thread=False', echo=False)
 Base = declarative_base()
 
 logger = Logger(namespace='- MODEL -')

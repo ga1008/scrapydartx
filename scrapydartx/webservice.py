@@ -1,14 +1,10 @@
 import hashlib
 import json
-from copy import copy
-import traceback
-import pymysql
-import uuid
 import os
-try:
-    from cStringIO import StringIO as BytesIO
-except ImportError:
-    from io import BytesIO
+import traceback
+import uuid
+from copy import copy
+from io import BytesIO
 
 from twisted.logger import Logger
 from twisted.python import log
@@ -461,7 +457,9 @@ class InvokeRank(WsResource):
 
 class Filter(WsResource):
 
-    def _filter_time(self, filter_params, finishes, request, index, default=[]):
+    def _filter_time(self, filter_params, finishes, request, index, default=None):
+        if default is None:
+            default = []
         if not valid_params(filter_params):
             return default
         res = valid_date(filter_params.get("st"), filter_params.get("et"))
@@ -471,21 +469,27 @@ class Filter(WsResource):
         spiders = [spider_dict(i) for i in finishes if (i.start_time - st).days >= 0 and (et - i.start_time).days >= 0][:index]
         return spiders
 
-    def _filter_project(self, filter_params, finishes, request, index, default=[]):
+    def _filter_project(self, filter_params, finishes, request, index, default=None):
+        if default is None:
+            default = []
         if not valid_params(filter_params):
             return default
         project_name = filter_params.get("project")
         spiders = [spider_dict(i) for i in finishes if i.project == project_name][:index]
         return spiders
 
-    def _filter_spider(self, filter_params, finishes, request, index, default=[]):
+    def _filter_spider(self, filter_params, finishes, request, index, default=None):
+        if default is None:
+            default = []
         if not valid_params(filter_params):
             return default
         spider_name = filter_params.get("spider")
         spiders = [spider_dict(i) for i in finishes if i.spider == spider_name][:index]
         return spiders
 
-    def _filter_runtime(self, request, filter_params, finishes, index, default=[]):
+    def _filter_runtime(self, request, filter_params, finishes, index, default=None):
+        if default is None:
+            default = []
         runtime = int(valid_index(request, arg="runtime", ins="int", default=None))
         _compare = {
             "greater": lambda x: (x.end_time-x.start_time).seconds > runtime,
