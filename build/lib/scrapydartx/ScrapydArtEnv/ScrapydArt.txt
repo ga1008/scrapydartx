@@ -1,5 +1,5 @@
 aiodns==2.0.0
-aiohttp==3.5.4
+aiohttp==3.7.4
 aliyun-python-sdk-core==2.13.4
 aliyun-python-sdk-core-v3==2.13.3
 aliyun-python-sdk-kms==2.6.0
