@@ -92,4 +92,4 @@ requests==2.22.0
 chardet==3.0.4
 urllib3==1.25.3
 psutil==5.6.3
-numpy==1.16.4
+numpy==1.22.0
